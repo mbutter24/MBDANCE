@@ -1,0 +1,124 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a {
+    color: black; /* Default color */
+    font-size: 16px; /* Default size */
+    text-decoration: none; /* Removes underline */
+    transition: all 0.3s ease; /* Smooth effect for all properties */
+}
+
+/* Hover effect */
+a:hover{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ul {
+    text-decoration: underline;
+}
+
+.site-heading-lower {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.brwnclr {
+    color: rgba(47, 23, 15, 0.9) !important;
+}
+
+.nobold {
+    font-weight: lighter !important;
+}
+
+.brwnbg {
+    background-color: rgba(47, 23, 15, 0.886) !important;
+}
+
+.cool{
+    font-style: normal !important;
+}
+
+.norm {
+    text-decoration: none !important;
+}
+
+.pnkclr {
+    color: rgba(238, 175, 185, 0.571) !important;
+}
+
+.pnkbg {
+    background-color: rgba(238, 175, 185, 0.571) !important;
+}
+
+.whtclr {
+    color: #faeddd !important;
+}
+
+.whtbg {
+    background-color: #faeddd !important;
+    border-color: #faeddd !important;
+}
+
+
+.mb-3 {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgba(47, 23, 15, 0.9)
+}
+
+
+#mainNav{
+    background-color: rgba(238, 175, 185, 0.571);
+}
+
+.imgsize{
+    width: 500px;
+    height: auto;
+}
+
+.movebox{
+    left: 400px;
+    width: 60%;
+    margin-top: 1%;
+    position: absolute; 
+    border-right: 10px;
+  }
+
+
+.contact{
+   display: block;
+    font-size: 3rem;
+    font-weight: 100;
+      }
+
+.email{
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif
+    
+}
+
+.submit{
+    text-transform: uppercase;
+    font-size: larger;
+}
+
+.button {
+    display: block; /* Makes the button take up full width */
+    margin: 20px auto; /* Centers horizontally */
+    padding: 10px 20px;
+    background-color: rgba(238, 175, 185, 0.571);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.top {
+    font-family: lora;
+}
+
+
+  

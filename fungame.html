@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Game</title>
+    <link rel="stylesheet" href="css/secretstyles.css">
+
+</head>
+<body>
+    <a class="nav-link text-uppercase header" href="index.html" id="Main">Main</a>  |
+    <a class="nav-link text-uppercase header" href="hehe.html" id="home">Home</a>  |
+    <a class="nav-link text-uppercase header" href="coolgraph.html" id="coolgraph">Cool Graph</a>  |
+    <a class="nav-link text-uppercase header" href="fungame.html" id="fungame">Fun Game</a>
+    
+    <br><br><br>
+    <h1>Fun Game!</h1>
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <style>
+    .bdy {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+    }
+    canvas {
+      border: 1px solid white;
+      background-color: #000;
+    }
+    #score {
+      position: absolute;
+      top: 600px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+    }
+
+    #startButton {
+        padding: 20px 30px;
+        font-size: 60px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        -webkit-text-stroke: 1px rgb(255, 255, 255);
+        background-color: maroon;
+        color: rgb(251, 251, 251);
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        position: absolute;
+        left: 41%;
+        top: 38%;
+    }
+    
+    #startButton:hover {
+        background-color: rgba(128, 0, 0, 0.614);
+    }
+
+  </style>
+
+<button id="startButton">START</button>
+
+<div class="bdy">
+  <div id="score">Score: 0</div>
+  <canvas id="gameCanvas" width="400" height="400" style="display: none;"></canvas>
+</div>
+
+<script>
+  const startButton = document.getElementById('startButton');
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  const scoreDisplay = document.getElementById('score');
+
+  const boxSize = 20;
+  let snake = [{ x: 9 * boxSize, y: 9 * boxSize }];
+  let direction = "RIGHT";
+  let food = {
+    x: Math.floor(Math.random() * 20) * boxSize,
+    y: Math.floor(Math.random() * 20) * boxSize
+  };
+  let score = 0;
+  let gameInterval;
+
+  // Start button functionality
+  startButton.addEventListener('click', () => {
+    startButton.style.display = 'none'; // Hide the button
+    canvas.style.display = 'block'; // Show the game canvas
+    gameInterval = setInterval(gameLoop, 150); // Start the game loop
+  });
+
+  document.addEventListener('keydown', changeDirection);
+
+  function changeDirection(event) {
+    const key = event.key;
+    if (key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
+    else if (key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
+    else if (key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
+    else if (key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
+  }
+
+  function drawSnake() {
+    snake.forEach(segment => {
+      ctx.fillStyle = 'lime';
+      ctx.fillRect(segment.x, segment.y, boxSize, boxSize);
+    });
+  }
+
+  function moveSnake() {
+    const head = { ...snake[0] };
+    if (direction === 'UP') head.y -= boxSize;
+    else if (direction === 'DOWN') head.y += boxSize;
+    else if (direction === 'LEFT') head.x -= boxSize;
+    else if (direction === 'RIGHT') head.x += boxSize;
+
+    snake.unshift(head);
+
+    // Check if snake eats food
+    if (head.x === food.x && head.y === food.y) {
+      score += 1;
+      scoreDisplay.textContent = `Score: ${score}`;
+      food = {
+        x: Math.floor(Math.random() * 20) * boxSize,
+        y: Math.floor(Math.random() * 20) * boxSize
+      };
+    } else {
+      snake.pop();
+    }
+  }
+
+  function drawFood() {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x, food.y, boxSize, boxSize);
+  }
+
+  function checkCollision() {
+    const head = snake[0];
+    // Check collision with walls
+    if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+      return true;
+    }
+
+    // Check collision with itself
+    for (let i = 1; i < snake.length; i++) {
+      if (head.x === snake[i].x && head.y === snake[i].y) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function gameLoop() {
+    if (checkCollision()) {
+      clearInterval(gameInterval); // Stop the game loop
+      alert(`Game Over! Your score was: ${score}`);
+      document.location.reload(); // Reload the page to reset the game
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    drawFood();
+    moveSnake();
+    drawSnake();
+  }
+</script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<a href="#home">BACK TO TOP</a>    
+    <br><br>
+    <div class="footer">
+        <p>&copy; Makinley Butterfield 2025</p>
+    </div>
+</body>
+</html>
